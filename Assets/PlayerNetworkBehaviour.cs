@@ -34,7 +34,10 @@ public class PlayerNetworkBehaviour : NetworkBehaviour {
 
     void keyboardBehaviour()
     {
-        Vector3 v = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * 10 * Time.deltaTime;
+        gameObject.transform.position += (Vector3)move;
+
+        Vector3 v = gameObject.transform.position;
         Vector2 playerPos = v;
         Collider2D hitCollider = Physics2D.OverlapPoint(playerPos);
 
